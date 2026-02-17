@@ -3,7 +3,7 @@ id: kegesch-calibre-web-automated
 icon: https://raw.githubusercontent.com/crocodilestick/Calibre-Web-Automated/main/root/images/app-icon.svg
 category: files
 name: Calibre-Web Automated
-version: "4.0.2"
+version: "4.0.6"
 tagline: Automated Calibre-Web with powerful features
 description: >-
   Calibre-Web Automated is an all-in-one solution combining the modern lightweight web UI from Calibre-Web with the robust feature set of Calibre, plus automation features thrown in on top.
