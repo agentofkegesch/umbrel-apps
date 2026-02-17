@@ -1,0 +1,87 @@
+manifestVersion: 1
+id: kegesch-pilot
+icon: https://raw.githubusercontent.com/alekspetrov/pilot/main/assets/pilot-logo.png
+category: developer
+name: Pilot
+version: "1.36.0"
+tagline: AI that ships your tickets autonomously
+description: >-
+  Pilot is an autonomous development pipeline that picks up tickets from GitHub,
+  plans the implementation, writes the code, runs tests, and opens a PR. You
+  review and merge - that's it.
+
+
+  Features:
+
+  - Autonomous ticket processing from GitHub issues
+
+  - Uses OpenCode AI as the backend for code generation
+
+  - Quality gates with test, lint, and build validation
+
+  - Self-review before PR push
+
+  - Sequential execution to prevent conflicts
+
+  - Persistent metrics and cost tracking
+
+
+  SETUP REQUIREMENTS
+
+
+  This app requires configuration via the web terminal. After installation:
+
+
+  1. Open the web UI (port 9090)
+
+  2. In the terminal, run: pilot init
+
+  3. Edit the config file:
+     nano ~/.pilot/config.yaml
+
+  4. Configure at minimum:
+     - adapters.github.token: Your GitHub PAT
+     - adapters.github.repo: "owner/repo"
+     - executor.opencode.model: Your preferred model
+
+  5. (Optional) Set up SSH keys for private repos:
+     nano ~/umbrel/app-data/kegesch-pilot/data/.ssh/id_ed25519
+
+  6. Start Pilot:
+     pilot start --github --dashboard
+
+
+  Required GitHub PAT scopes: repo, read:org, read:user
+
+
+  The config file is persisted at:
+  ~/umbrel/app-data/kegesch-pilot/data/pilot/config.yaml
+releaseNotes: >-
+  Initial release of Pilot for Umbrel with OpenCode backend.
+
+
+  - Autonomous GitHub issue processing
+
+  - OpenCode AI integration for code generation
+
+  - Web terminal (ttyd) for CLI access
+
+  - TUI dashboard for real-time monitoring
+
+  - Quality gates and self-review features
+
+  - Persistent project workspace
+developer: Aleksei Petrov
+website: https://pilot.quantflow.studio
+repo: https://github.com/alekspetrov/pilot
+support: https://github.com/alekspetrov/pilot/issues
+port: 9090
+dependencies: []
+gallery:
+  - https://raw.githubusercontent.com/alekspetrov/pilot/main/assets/pilot-preview.png
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+submitter: kegesch
+submission: https://github.com/kegesch/umbrel-apps

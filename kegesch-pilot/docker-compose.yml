@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: kegesch-pilot_web_1
+      APP_PORT: 7681
+      PROXY_AUTH_ADD: "false"
+    container_name: kegesch-pilot_app_proxy_1
+
+  web:
+    image: ghcr.io/kegesch/umbrel-apps/kegesch-pilot:1.36.0
+    container_name: kegesch-pilot_web_1
+    restart: on-failure
+    stop_grace_period: 1m
+    environment:
+      - EXECUTOR_BACKEND=opencode
+    volumes:
+      - ${APP_DATA_DIR}/data/projects:/projects
+      - ${APP_DATA_DIR}/data/pilot:/root/.pilot
+      - ${APP_DATA_DIR}/data/.ssh:/root/.ssh:ro
+    working_dir: /projects
+    command: ["ttyd", "-W", "-t", "fontSize=14", "-t", "theme={'background':'#1a1a2e'}", "-p", "7681", "bash"]
