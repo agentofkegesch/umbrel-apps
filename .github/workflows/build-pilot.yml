@@ -6,12 +6,12 @@ on:
       - main
       - master
     paths:
-      - 'kegesch-pilot/**'
-      - '.github/workflows/build-pilot.yml'
+      - "kegesch-pilot/**"
+      - ".github/workflows/build-pilot.yml"
   pull_request:
     paths:
-      - 'kegesch-pilot/**'
-      - '.github/workflows/build-pilot.yml'
+      - "kegesch-pilot/**"
+      - ".github/workflows/build-pilot.yml"
   workflow_dispatch:
 
 env:
@@ -51,7 +51,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
-            type=raw,value=1.36.0
+            type=raw,value=1.38.0
             type=sha,prefix={{branch}}-
             type=ref,event=branch
             type=ref,event=pr
