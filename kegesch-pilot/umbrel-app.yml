@@ -3,7 +3,7 @@ id: kegesch-pilot
 icon: https://raw.githubusercontent.com/alekspetrov/pilot/main/assets/logo.svg
 category: developer
 name: Pilot
-version: "1.36.0"
+version: "1.38.0"
 tagline: AI that ships your tickets autonomously
 description: >-
   Pilot is an autonomous development pipeline that picks up tickets from GitHub,
