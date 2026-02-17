@@ -1,6 +1,6 @@
 manifestVersion: 1
 id: kegesch-pilot
-icon: https://raw.githubusercontent.com/alekspetrov/pilot/main/assets/pilot-logo.png
+icon: https://raw.githubusercontent.com/alekspetrov/pilot/main/assets/logo.svg
 category: developer
 name: Pilot
 version: "1.36.0"
@@ -77,8 +77,7 @@ repo: https://github.com/alekspetrov/pilot
 support: https://github.com/alekspetrov/pilot/issues
 port: 9090
 dependencies: []
-gallery:
-  - https://raw.githubusercontent.com/alekspetrov/pilot/main/assets/pilot-preview.png
+gallery: []
 path: ""
 defaultUsername: ""
 defaultPassword: ""

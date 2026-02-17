@@ -1,6 +1,6 @@
 manifestVersion: 1
 id: kegesch-calibre-web-automated
-icon: https://raw.githubusercontent.com/crocodilestick/Calibre-Web-Automated/main/root/images/app-icon.svg
+icon: https://raw.githubusercontent.com/crocodilestick/Calibre-Web-Automated/main/README_images/cwa-logo-round-light.png
 category: files
 name: Calibre-Web Automated
 version: "4.0.6"
