@@ -1,0 +1,108 @@
+manifestVersion: 1
+id: kegesch-wyoming-openai
+icon: https://raw.githubusercontent.com/roryeckel/wyoming_openai/main/logo.png
+category: automation
+name: Wyoming OpenAI
+version: "0.4.1"
+tagline: OpenAI-compatible proxy for Wyoming protocol
+description: >-
+  Wyoming OpenAI bridges the Wyoming protocol (used by Home Assistant) to
+  OpenAI-compatible STT/TTS backends like LocalAI, OpenAI, Groq, and more.
+
+
+  FEATURES
+
+  - Speech-to-Text (STT): Connects Home Assistant to Whisper and other
+    transcription models
+
+  - Text-to-Speech (TTS): Supports multiple TTS backends with configurable
+    voices
+
+  - File-Based Configuration: Easily switch models and backends by editing
+    a single configuration file
+
+  - Privacy-Focused: Default LocalAI backend runs completely offline
+
+
+  SET-UP INSTRUCTIONS
+
+  This app requires a backend service to function. The default configuration
+  uses LocalAI.
+
+
+  1. Install a backend service (e.g., LocalAI from Umbrel App Store or
+     deploy separately)
+
+  2. Configure the backend URL:
+     - SSH into your Umbrel
+     - Edit ~/umbrel/app-data/kegesch-wyoming-openai/settings.env
+     - Update STT_OPENAI_URL and TTS_OPENAI_URL to point to your backend
+       (e.g., http://localai_api_1:8080/v1 for the LocalAI app)
+     - If using the official LocalAI Umbrel app, use:
+       http://localai:8080/v1
+     - Restart the app: sudo ~/umbrel/scripts/app restart
+       kegesch-wyoming-openai
+
+
+  3. Configure models:
+     - In settings.env, set STT_MODELS and TTS_MODELS to match your
+       backend's available models
+     - Example STT models: whisper-base, whisper-large-v3
+     - Example TTS models: en-us-amy-low.onnx, gpt-4o-mini-tts
+
+
+  4. Add to Home Assistant:
+     - Go to Settings > Devices & Services
+     - Add integration > Search for "Wyoming Protocol"
+     - Enter: tcp://umbrel.local:10300
+     - Configure your voice assistant pipeline to use the new STT/TTS
+       services
+
+
+  CONFIGURATION FILE
+
+  Edit ~/umbrel/app-data/kegesch-wyoming-openai/settings.env to customize:
+
+  - STT_OPENAI_URL: Backend URL for speech-to-text
+  - TTS_OPENAI_URL: Backend URL for text-to-speech
+  - STT_MODELS: Space-separated list of available STT models
+  - TTS_MODELS: Space-separated list of available TTS models
+  - STT_BACKEND: Backend type (LOCALAI, OPENAI, GROQ, etc.)
+  - TTS_BACKEND: Backend type (LOCALAI, OPENAI, GROQ, etc.)
+  - STT_OPENAI_KEY: API key for cloud backends
+  - TTS_OPENAI_KEY: API key for cloud backends
+
+
+  After changing settings, restart the app:
+    sudo ~/umbrel/scripts/app restart kegesch-wyoming-openai
+
+
+  For full documentation, visit: https://github.com/roryeckel/wyoming_openai
+
+
+  Note: This is a community-built Umbrel app and is not officially
+  affiliated with the Wyoming OpenAI project.
+developer: Rory Eckel
+website: https://github.com/roryeckel/wyoming_openai
+repo: https://github.com/roryeckel/wyoming_openai
+support: https://github.com/roryeckel/wyoming_openai/issues
+port: 10300
+dependencies: []
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+releaseNotes: >-
+  Initial release of Wyoming OpenAI for Umbrel.
+
+
+  - File-based configuration for easy model switching
+
+  - Support for multiple backends (LocalAI, OpenAI, Groq, Edge TTS)
+
+  - Streaming support for compatible models
+
+  - Full Wyoming protocol compatibility with Home Assistant
+submitter: kegesch
+submission: https://github.com/kegesch/umbrel-apps
