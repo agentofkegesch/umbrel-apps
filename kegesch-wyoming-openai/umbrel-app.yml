@@ -59,22 +59,25 @@ description: >-
        services
 
 
-  CONFIGURATION FILE
+   CONFIGURATION FILE
 
-  Edit ~/umbrel/app-data/kegesch-wyoming-openai/settings.env to customize:
-
-  - STT_OPENAI_URL: Backend URL for speech-to-text
-  - TTS_OPENAI_URL: Backend URL for text-to-speech
-  - STT_MODELS: Space-separated list of available STT models
-  - TTS_MODELS: Space-separated list of available TTS models
-  - STT_BACKEND: Backend type (LOCALAI, OPENAI, GROQ, etc.)
-  - TTS_BACKEND: Backend type (LOCALAI, OPENAI, GROQ, etc.)
-  - STT_OPENAI_KEY: API key for cloud backends
-  - TTS_OPENAI_KEY: API key for cloud backends
+   To customize settings, create a configuration file:
+     - SSH into your Umbrel
+     - cp ~/umbrel/apps/kegesch-wyoming-openai/settings.env.template \
+        ~/umbrel/app-data/kegesch-wyoming-openai/settings.env
+     - Edit ~/umbrel/app-data/kegesch-wyoming-openai/settings.env
+     - Restart the app from the Umbrel UI
 
 
-  After changing settings, restart the app:
-    sudo ~/umbrel/scripts/app restart kegesch-wyoming-openai
+   Key settings to configure:
+     - STT_OPENAI_URL: Backend URL for speech-to-text
+     - TTS_OPENAI_URL: Backend URL for text-to-speech
+     - STT_MODELS: Space-separated list of available STT models
+     - TTS_MODELS: Space-separated list of available TTS models
+     - STT_BACKEND: Backend type (LOCALAI, OPENAI, GROQ, etc.)
+     - TTS_BACKEND: Backend type (LOCALAI, OPENAI, GROQ, etc.)
+     - STT_OPENAI_KEY: API key for cloud backends
+     - TTS_OPENAI_KEY: API key for cloud backends
 
 
   For full documentation, visit: https://github.com/roryeckel/wyoming_openai

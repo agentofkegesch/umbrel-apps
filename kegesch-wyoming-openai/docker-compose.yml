@@ -8,33 +8,11 @@ services:
       PROXY_AUTH_ADD: "false"
     container_name: kegesch-wyoming-openai_app_proxy_1
 
-  init-permissions:
-    image: ghcr.io/roryeckel/wyoming_openai:0.4.1
-    container_name: kegesch-wyoming-openai_init_1
-    user: root
-    entrypoint: ["/bin/sh", "-c"]
-    command:
-      - |
-        if [ ! -f /settings/settings.env ]; then
-          cp /settings-template/settings.env /settings/settings.env
-          chown 1000:1000 /settings/settings.env
-          echo "Configuration file created from template"
-        else
-          echo "Configuration file already exists, preserving existing settings"
-        fi
-        echo "Initialization complete"
-    volumes:
-      - ${APP_DATA_DIR}:/settings
-      - ${APP_DIR}/settings.env.template:/settings-template/settings.env:ro
-    restart: "no"
-
   wyoming_openai:
     image: ghcr.io/roryeckel/wyoming_openai:0.4.1
     container_name: kegesch-wyoming-openai_wyoming_openai_1
     init: true
     env_file:
       - ${APP_DATA_DIR}/settings.env
+      - ${APP_DIR}/settings.env.template
     restart: on-failure
-    depends_on:
-      init-permissions:
-        condition: service_completed_successfully
