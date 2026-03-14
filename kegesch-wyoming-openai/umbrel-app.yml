@@ -3,7 +3,7 @@ id: kegesch-wyoming-openai
 icon: https://raw.githubusercontent.com/roryeckel/wyoming_openai/main/logo.png
 category: automation
 name: Wyoming OpenAI
-version: "0.4.1"
+version: "0.4.2"
 tagline: OpenAI-compatible proxy for Wyoming protocol
 description: >-
   Wyoming OpenAI bridges the Wyoming protocol (used by Home Assistant) to
