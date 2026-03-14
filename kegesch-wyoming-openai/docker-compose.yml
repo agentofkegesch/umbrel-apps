@@ -14,5 +14,4 @@ services:
     init: true
     env_file:
       - ${APP_DATA_DIR}/settings.env
-      - ${APP_DIR}/settings.env.template
     restart: on-failure
