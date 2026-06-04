@@ -1,0 +1,56 @@
+manifestVersion: 1
+id: kegesch-openbb
+icon: https://raw.githubusercontent.com/OpenBB-finance/OpenBB/develop/images/odp-dark.svg
+category: finance
+name: OpenBB Platform
+version: "1.0.2"
+tagline: Open-source financial data platform with REST API
+description: >-
+  Open Data Platform by OpenBB (ODP) provides a unified REST API for financial
+  data from multiple providers. Access market data, financial statements,
+  economic indicators, and more through a single interface.
+
+
+  Features:
+
+  - FastAPI-based REST API on port 6900
+
+  - OpenAPI/Swagger docs at /docs
+
+  - Multiple free data providers included (FRED, SEC, Polygon, etc.)
+
+  - Extensible with premium data providers (Benzinga, Intrinio, etc.)
+
+  - MCP-compatible for AI agent integration
+
+
+  SETUP:
+
+  After installation, the API is available immediately. Open the app to access
+  the Swagger UI documentation.
+
+  To configure API keys for premium providers, use the web terminal or edit
+  the user settings file.
+releaseNotes: >-
+  Initial release of OpenBB Platform for Umbrel.
+
+  - OpenBB ODP v1.0.2 (Platform API)
+
+  - REST API with Swagger UI documentation
+
+  - Built-in free data providers
+
+  - Persistent user settings and data directory
+developer: OpenBB Finance
+website: https://openbb.co
+repo: https://github.com/OpenBB-finance/OpenBB
+support: https://github.com/OpenBB-finance/OpenBB/issues
+port: 6900
+dependencies: []
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+submitter: kegesch
+submission: https://github.com/kegesch/umbrel-apps
