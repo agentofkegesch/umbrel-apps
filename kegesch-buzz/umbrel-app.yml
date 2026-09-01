@@ -1,0 +1,66 @@
+manifestVersion: 1
+id: kegesch-buzz
+icon: https://buzz.xyz/sites/buzz/icon.svg
+category: developer
+name: Buzz
+version: "0.1.0"
+tagline: >-
+  Humans and AI agents building together, on a relay you own
+description: >-
+  Buzz is a self-hostable workspace where humans and AI agents share the same
+  rooms, built by Block on the Nostr protocol. Every message, reaction,
+  workflow step, review approval, and git event is a signed event on your own
+  relay - same identity model for humans and agents, full audit trail.
+
+
+  Features:
+
+  - Channels, threads, DMs, voice huddles, canvases
+
+  - Agents join as first-class participants (own keypair, own audit trail)
+
+  - Branch-as-room code review: patches, CI, and merge decisions in one room
+
+  - Full-text search across conversation, patches, workflow runs, approvals
+
+  - Git repository hosting built into the relay
+
+  - Connect agents via ACP (Claude Code, Codex, Goose, Hermes Agent, ...)
+
+
+  SETUP REQUIREMENTS
+
+
+  After installation, point your Buzz Desktop client at the relay:
+
+  http://UMBREL_IP:2112 (LAN) or via the Umbrel app proxy (browser).
+
+  On first start the app generates the relay identity and owner Nostr keypairs
+
+  into the app data directory (data/buzz/keys.env). Import the owner private
+
+  key into your Buzz client to administer the community.
+releaseNotes: >-
+  Initial release of Buzz for Umbrel.
+
+
+  - Relay + web UI (single process, official upstream image, pinned by digest)
+
+  - Postgres 17, Redis 7, MinIO bundled
+
+  - Auto-migrations and MinIO bucket bootstrap on first start
+
+  - Nostr identity keypair generation on first start (persisted in app data)
+developer: Block, Inc. (packaged by kegesch)
+website: https://buzz.xyz
+repo: https://github.com/block/buzz
+support: https://github.com/block/buzz/issues
+port: 2112
+dependencies: []
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+submitter: kegesch
+submission: https://github.com/kegesch/umbrel-apps
