@@ -50,7 +50,8 @@ set -a
 set +a
 export BUZZ_RELAY_PRIVATE_KEY RELAY_OWNER_PUBKEY
 
-# Relay runs as the non-root `buzz` user from the base image;
-# su-exec preserves the exported environment.
+# Relay runs as the non-root `buzz` user from the base image; runuser
+# (util-linux, preinstalled in debian-slim) preserves the exported env.
+export HOME=/var/lib/buzz
 chown -R buzz:buzz "$KEYS_DIR" /data/git || true
-exec su-exec buzz:buzz /usr/local/bin/buzz-relay
+exec runuser -u buzz -- /usr/local/bin/buzz-relay
