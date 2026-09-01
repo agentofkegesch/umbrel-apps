@@ -3,7 +3,7 @@ id: kegesch-buzz
 icon: https://buzz.xyz/sites/buzz/icon.svg
 category: developer
 name: Buzz
-version: "0.1.0"
+version: "0.1.1"
 tagline: >-
   Humans and AI agents building together, on a relay you own
 description: >-
@@ -41,6 +41,11 @@ description: >-
 
   key into your Buzz client to administer the community.
 releaseNotes: >-
+  0.1.1: Fix relay crash on first start - BUZZ_AUTO_MIGRATE was quoted in
+  compose list-form env, so the relay read the literal string "true",
+  skipped migrations and failed with "relation does not exist".
+
+
   Initial release of Buzz for Umbrel.
 
 

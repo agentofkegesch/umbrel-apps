@@ -11,10 +11,14 @@ services:
     container_name: kegesch-buzz_app_proxy_1
 
   relay:
-    image: ghcr.io/kegesch/umbrel-apps/kegesch-buzz:0.1.0
+    image: ghcr.io/kegesch/umbrel-apps/kegesch-buzz:0.1.1
     container_name: kegesch-buzz_relay_1
     restart: on-failure
     stop_grace_period: 1m
+    # LAN access for Buzz Desktop / ws clients (Umbrel proxy only serves
+    # browser UI; native clients need a direct WebSocket port).
+    ports:
+      - "2112:3000"
     environment:
       - BUZZ_BIND_ADDR=0.0.0.0:3000
       - BUZZ_HEALTH_PORT=8080
@@ -29,8 +33,10 @@ services:
       - BUZZ_GIT_HOOK_HMAC_SECRET=e9edd16d9c3dae9b073d1a9fc2a5bb80035798f69345eac6
       # Key material (BUZZ_RELAY_PRIVATE_KEY, RELAY_OWNER_PUBKEY) is provided
       # by the entrypoint from /data/buzz/keys.env (generated on first start).
-      - BUZZ_AUTO_MIGRATE="true"
-      - BUZZ_GIT_CONFORMANCE_PROBE="true"
+      # NOTE: unquoted booleans on purpose - compose list-form env does NOT
+      # strip quotes, and the relay's bool parsing would see `"true"`.
+      - BUZZ_AUTO_MIGRATE=true
+      - BUZZ_GIT_CONFORMANCE_PROBE=true
       - RUST_LOG=buzz_relay=info,buzz_db=info,buzz_auth=info,buzz_pubsub=info,tower_http=info
     depends_on:
       postgres:
