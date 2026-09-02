@@ -3,7 +3,7 @@ id: kegesch-buzz
 icon: https://buzz.xyz/sites/buzz/icon.svg
 category: developer
 name: Buzz
-version: "0.1.1"
+version: "0.1.2"
 tagline: >-
   Humans and AI agents building together, on a relay you own
 description: >-
@@ -41,6 +41,12 @@ description: >-
 
   key into your Buzz client to administer the community.
 releaseNotes: >-
+  0.1.2: Fix install hanging at 99% - the relay healthcheck used curl, but
+  the upstream runtime image contains no curl/wget/socat. Healthcheck now
+  probes /_readiness via bash /dev/tcp (same as upstream compose). Also
+  fixes BUZZ_GIT_REPO_PATH (relay stores git repos under /data/git).
+
+
   0.1.1: Fix relay crash on first start - BUZZ_AUTO_MIGRATE was quoted in
   compose list-form env, so the relay read the literal string "true",
   skipped migrations and failed with "relation does not exist".
