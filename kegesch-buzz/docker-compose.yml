@@ -30,6 +30,7 @@ services:
       - BUZZ_S3_ACCESS_KEY=buzz1463c38b413f
       - BUZZ_S3_SECRET_KEY=8be71cf686ddff9b5110340c855a896e5e3dd891
       - BUZZ_S3_BUCKET=buzz-media
+      - BUZZ_GIT_REPO_PATH=/data/git
       - BUZZ_GIT_HOOK_HMAC_SECRET=e9edd16d9c3dae9b073d1a9fc2a5bb80035798f69345eac6
       # Key material (BUZZ_RELAY_PRIVATE_KEY, RELAY_OWNER_PUBKEY) is provided
       # by the entrypoint from /data/buzz/keys.env (generated on first start).
@@ -50,7 +51,13 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data:/data
     healthcheck:
-      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8080/_readiness || exit 1"]
+      # The upstream runtime image has bash but NO curl/wget/socat — probe
+      # /_readiness over bash's /dev/tcp (same approach as upstream compose).
+      test:
+        [
+          "CMD-SHELL",
+          "bash -ec 'exec 3<>/dev/tcp/127.0.0.1/8080; printf \"GET /_readiness HTTP/1.1\\r\\nHost: 127.0.0.1\\r\\nConnection: close\\r\\n\\r\\n\" >&3; grep -q \"200 OK\" <&3'",
+        ]
       interval: 10s
       timeout: 3s
       retries: 12
