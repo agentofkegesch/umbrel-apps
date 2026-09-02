@@ -3,7 +3,7 @@ id: kegesch-buzz
 icon: https://buzz.xyz/sites/buzz/icon.svg
 category: developer
 name: Buzz
-version: "0.1.2"
+version: "0.1.3"
 tagline: >-
   Humans and AI agents building together, on a relay you own
 description: >-
@@ -41,6 +41,13 @@ description: >-
 
   key into your Buzz client to administer the community.
 releaseNotes: >-
+  0.1.3: Fix install hanging at 1% - umbrelOS binds the manifest port (2112)
+  onto the app-proxy container itself; our extra host port publish on the
+  relay collided ("port is already allocated") and the relay never started.
+  The relay port mapping is removed; LAN clients connect via the app proxy
+  (HTTP + WebSocket pass-through on port 2112).
+
+
   0.1.2: Fix install hanging at 99% - the relay healthcheck used curl, but
   the upstream runtime image contains no curl/wget/socat. Healthcheck now
   probes /_readiness via bash /dev/tcp (same as upstream compose). Also
