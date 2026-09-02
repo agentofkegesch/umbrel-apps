@@ -15,10 +15,11 @@ services:
     container_name: kegesch-buzz_relay_1
     restart: on-failure
     stop_grace_period: 1m
-    # LAN access for Buzz Desktop / ws clients (Umbrel proxy only serves
-    # browser UI; native clients need a direct WebSocket port).
-    ports:
-      - "2112:3000"
+    # NOTE: do NOT publish host ports here. umbrelOS binds the manifest
+    # `port` (2112) onto the app_proxy container itself; a second bind on
+    # the relay collides ("port is already allocated") and the relay hangs
+    # in Created state, blocking app install at 1%. LAN clients reach the
+    # relay through the app-proxy (HTTP + WebSocket pass-through).
     environment:
       - BUZZ_BIND_ADDR=0.0.0.0:3000
       - BUZZ_HEALTH_PORT=8080
