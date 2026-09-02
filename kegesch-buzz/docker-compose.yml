@@ -11,7 +11,7 @@ services:
     container_name: kegesch-buzz_app_proxy_1
 
   relay:
-    image: ghcr.io/kegesch/umbrel-apps/kegesch-buzz:0.1.2
+    image: ghcr.io/kegesch/umbrel-apps/kegesch-buzz:0.1.3
     container_name: kegesch-buzz_relay_1
     restart: on-failure
     stop_grace_period: 1m
